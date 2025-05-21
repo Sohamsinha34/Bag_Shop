@@ -1,0 +1,63 @@
+<%- include('./partials/header') %>
+<div class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Create Your Profile</h1>
+    
+    <form action="/mentor" method="POST" enctype="multipart/form-data" class="space-y-4">
+      <!-- Full Name -->
+      <div>
+        <label class="block mb-1 text-gray-700 font-medium">Full Name</label>
+        <input 
+          type="text" 
+          name="fullname" 
+          required 
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block mb-1 text-gray-700 font-medium">Email</label>
+        <input 
+          type="email" 
+          name="email" 
+          required 
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <label class="block mb-1 text-gray-700 font-medium">Contact Number</label>
+        <input 
+          type="number" 
+          name="contact" 
+          required 
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      <!-- Profile Picture -->
+      <div>
+        <label class="block mb-1 text-gray-700 font-medium">Profile Picture</label>
+        <input 
+          type="file" 
+          name="profilepic" 
+          accept="image/*"
+          class="w-full"
+        />
+        <p class="text-sm text-gray-500 mt-1">Default image will be used if not uploaded.</p>
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition"
+      >
+        Submit Profile
+      </button>
+    </form>
+  </div>
+</div>
+<%- include('./partials/footer') %>
+

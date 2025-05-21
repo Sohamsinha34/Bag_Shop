@@ -10,7 +10,8 @@ const productModel=require("../models/product")
         discount,
         bgcolor,
         panelcolor,
-        textcolor
+        textcolor,
+        stock
     }=req.body
     
     
@@ -22,7 +23,7 @@ const productModel=require("../models/product")
         bgcolor,
         panelcolor,
         textcolor,
-
+        stock
     })
     req.flash("success","product created sucessfully");
     res.redirect("/owners/admin")
