@@ -4,6 +4,8 @@ const isLoggedin=require("../middlewares/isLoggend")
 const productModel=require('../models/product')
 const userModel=require('../models/user')
 const upload=require('../middlewares/multer')
+const owner=require('../models/owner')
+
 
 router.get("/",function(req,res){
     let error= req.flash("error");
@@ -60,6 +62,7 @@ router.get('/shop/available', isLoggedin, async (req, res) => {
     }
 });
 router.post('/mentor', upload.single('profilepic'), (req, res) => {
+
   const { fullname, email, contact } = req.body;
   const profilepic = req.file ? req.file.filename : 'default.png';
    const user = {
@@ -85,7 +88,15 @@ router.get("/profile",isLoggedin,async(req,res)=>{
     res.render("profile")
 });
 
-router.get("/logout",isLoggedin,async(req,res)=>{
-    res.render("shop")
+router.get("/edit-profile",isLoggedin,async(req,res)=>{
+    const owner= await ownerModel.findOne({email: req.user.email})
+    res.redirect("/profile")
 });
+
+router.get("/logout",isLoggedin,async(req,res)=>{
+    res.cookie("token","");
+    res.redirect("/")
+});
+
+
 module.exports = router;

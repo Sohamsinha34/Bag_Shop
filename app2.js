@@ -6,6 +6,7 @@ const ownerRouter=require("./routes/ownerRouter");
 const userRouter=require("./routes/userRouter");
 const productRouter=require("./routes/productRouter");
 const indexRouter=require("./routes/indexRouter");
+const cartRouter=require("./routes/cartRouter");
 const expressSession=require("express-session");
 const flash=require("connect-flash");
 require("dotenv").config();
@@ -31,6 +32,8 @@ app.use("/",indexRouter);
 app.use("/owners", ownerRouter);
 app.use("/users", userRouter);
 app.use("/products", productRouter);
+app.use("/cart", cartRouter);
+
 
 
 app.listen(3004);

@@ -1,12 +1,17 @@
 <%- include('./partials/header') %>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <div class="w-full min-h-screen px-10 py-10">
     <h2 class="text-3xl font-bold mb-6">Your Cart</h2>
+    
 
     
     <div class="relative">
         <div class="flex overflow-x-auto gap-10 snap-x scroll-smooth pb-10" id="cart-carousel">
             <% user.cart.forEach(function(item, index){ %>
+                  <a href="/cart/remove/<%= item._id %>" 
+         class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 w-fit self-end">
+        Remove Item</a>
             <div class="min-w-[70%] snap-center bg-white rounded-xl shadow-lg flex" id="cart-item-<%= index %>">
                
                 <div class="w-[40%] rounded-l-xl overflow-hidden">
@@ -29,7 +34,7 @@
                     </div>
                 </div>
 
-                <!-- Product Right -->
+              
                 <div class="w-[60%] px-10 py-8">
                     <h3 class="text-xl mb-4">Price Breakdown</h3>
                     <div class="space-y-3">
@@ -55,23 +60,34 @@
             <% }) %>
         </div>
 
-        <!-- Slider Buttons -->
+        
         <button onclick="scrollCarousel(-1)" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full z-10">‹</button>
         <button onclick="scrollCarousel(1)" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full z-10">›</button>
     </div>
 
-    <!-- Total Amount -->
+  
     <div class="w-full mt-10 flex justify-end pr-10">
         <div class="text-right">
             <h3 class="text-2xl font-semibold">Total Payable:</h3>
             <h2 class="text-3xl font-bold text-green-600">₹ <%= bill %></h2>
+            <button onclick="showQR()" class="bg-green-600 text-white px-4 py-2 rounded">Pay via GPay</button>
+            <div id="qr-section" style="display: none; margin-top: 20px;">
+               <h4>Scan with GPay to Pay ₹<%= bill %></h4>
+             <img src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=sohamsinha040404@oksbi&pn=STACH&am=<%=bill%>&cu=INR&size=200x200" alt="UPI QR">
+         </div>
         </div>
     </div>
 </div>
 
 <%- include('./partials/footer') %>
 
+<script>
+  function showQR() {
+    document.getElementById('qr-section').style.display = 'block'
+  }
+</script>
 <script src="../models/carousel.js"></script>
+
 
 
 

@@ -9,7 +9,7 @@ const userSchema=mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref: "product",
         product:mongoose.Schema.Types.ObjectId,
-        quantity: { type: Number }
+        quantity: { type: Number },
      }],
       
       orders:{
