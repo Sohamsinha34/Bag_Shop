@@ -9,9 +9,7 @@
     <div class="relative">
         <div class="flex overflow-x-auto gap-10 snap-x scroll-smooth pb-10" id="cart-carousel">
             <% user.cart.forEach(function(item, index){ %>
-                  <a href="/cart/remove/<%= item._id %>" 
-         class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 w-fit self-end">
-        Remove Item</a>
+                 <a href="/removefromcart/<%= item._id %>" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 w-fit self-end">Remove</a>
             <div class="min-w-[70%] snap-center bg-white rounded-xl shadow-lg flex" id="cart-item-<%= index %>">
                
                 <div class="w-[40%] rounded-l-xl overflow-hidden">

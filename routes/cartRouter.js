@@ -32,10 +32,10 @@ router.get('/', isloggedin, async (req, res) => {
 
 router.get('/remove/:productId', isloggedin, async (req, res) => {
   try {
-    const userId = req.user._id;
+   let user= await userModel.findOne({email: req.user.email})
     const productId = req.params.productId;
 
-    await User.findByIdAndUpdate(userId, {
+    await User.findByemailAndUpdate(user, {
       $pull: {
         cart: { product: new mongoose.Types.ObjectId(productId) }
       }

@@ -50,6 +50,18 @@ router.get("/addtocart/:productid",isLoggedin,async(req,res)=>{
     req.flash("success", "Added to cart");
     res.redirect("/shop")
 });
+router.get("/removefromcart/:productid", isLoggedin, async (req, res) => {
+    let user = await userModel.findOne({ email: req.user.email });
+
+    user.cart = user.cart.filter(productId =>
+        productId.toString() !== req.params.productid
+    );
+
+    await user.save();
+    req.flash("success", "Removed from cart");
+    res.redirect("/cart");
+});
+
 router.get('/shop/available', isLoggedin, async (req, res) => {
     try {
         let products = await productModel.find({ stock: { $gt: 0 } });
