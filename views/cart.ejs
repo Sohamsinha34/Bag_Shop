@@ -71,7 +71,8 @@
             <button onclick="showQR()" class="bg-green-600 text-white px-4 py-2 rounded">Pay via GPay</button>
             <div id="qr-section" style="display: none; margin-top: 20px;">
                <h4>Scan with GPay to Pay ₹<%= bill %></h4>
-             <img src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=sohamsinha040404@oksbi&pn=STACH&am=<%=bill%>&cu=INR&size=200x200" alt="UPI QR">
+             
+             <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= encodeURIComponent('upi://pay?pa=sohamsinha040404@oksbi&pn=STACH&am=' + bill + '&cu=INR') %>&size=200x200" alt="UPI QR">
          </div>
         </div>
     </div>
