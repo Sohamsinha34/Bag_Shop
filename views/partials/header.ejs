@@ -10,14 +10,16 @@
 <body class="font-[helvetica_now_display']">
     <nav class="w-full flex justify-between px-3 py-5 ">
         <h3 class="text-2xl tracking-wide text-gray-500">STACH</h3>
-        <a href="/profile" class="text-sm  text-red-600 px-2 py-2  block text-left w-fit">
-              Create Account</a>
         <% var loggedin = typeof loggedin !== "undefined"? loggedin : true %>
         <% if(loggedin){ %>
         <div class="flex gap-5">
+                <a href="/profile" class="text-red-600 px-2 py-1 block w-fit text-sm">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 0115 0M18.75 10.5h2.25m-1.125-1.125v2.25" />
+  </svg>
+</a>
             <a href="/shop">Shop</a>
             <a href="/cart">Cart</a>
-            
             <a href="/display-profile">My Account</a>
             <a class="text-red-600" href="/logout">Logout</a>
         </div>

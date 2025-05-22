@@ -73,7 +73,7 @@ router.get('/shop/available', isLoggedin, async (req, res) => {
         res.status(500).send("Server error");
     }
 });
-router.post('/mentor', upload.single('profilepic'), (req, res) => {
+router.post('/mentor',isLoggedin, upload.single('profilepic'), (req, res) => {
 
   const { fullname, email, contact } = req.body;
   const profilepic = req.file ? req.file.filename : 'default.png';
